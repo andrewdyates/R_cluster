@@ -1,13 +1,17 @@
 #!/usr/bin/python
-"""Load pickled numpy matrix, remove non-significant rows and columns, save as text."""
+"""Load pickled numpy matrix, remove non-significant rows and columns, save as text.
+Optionally, save matrix as R object, too.
+"""
 import matrix_io as mio
 from lab_util import *
 import cPickle as pickle
 import sys
 import os
 import datetime
+import rpy2
 
-def main(pkl_fname=None, row_fname=None, col_fname=None, outdir=None, sig=None, abs=False):
+
+def main(pkl_fname=None, row_fname=None, col_fname=None, outdir=None, sig=None, abs=False, asR=True):
   """
   pkl_fname: path to pickled numpy dependency matrix
   row_fname: path to labeled text matrix with row ids, maybe col ids
@@ -54,8 +58,15 @@ def main(pkl_fname=None, row_fname=None, col_fname=None, outdir=None, sig=None, 
   mio.save(M, fp, ftype="tab", row_ids=row_names, col_ids=col_names, headers=header)
   fp.close()
   print "Tab matrix saved to %s." % out_fname
+
+  if asR:
+    # to be implemented.
+    r_fname = out_fname.rpartition('.')[0]+".RData"
+    pass
+  else:
+    r_fname = None
   
-  return out_fname
+  return {'tab': out_fname, 'RData': r_fname}
 
 
 if __name__ == "__main__":
