@@ -7,7 +7,6 @@ import cPickle as pickle
 import sys
 import os
 import datetime
-import rpy2
 
 
 def main(pkl_fname=None, row_fname=None, col_fname=None, outdir=None, sig=None, abs=False):
@@ -58,7 +57,7 @@ def main(pkl_fname=None, row_fname=None, col_fname=None, outdir=None, sig=None, 
   fp.close()
   print "Tab matrix saved to %s." % out_fname
   
-  return {'tab': out_fname, 'RData': r_fname}
+  return out_fname
 
 
 if __name__ == "__main__":
