@@ -1,5 +1,6 @@
 *.py[cod]
 *.RData
+scratch
 
 # C extensions
 *.so

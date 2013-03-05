@@ -1,4 +1,4 @@
-#PBS -N TestHClust2
+#PBS -N HClustfctx
 #PBS -l nodes=1:ppn=12
 #PBS -j oe
 #PBS -m ea
@@ -14,4 +14,4 @@ source .bash_profile
 cd $HOME
 
 
-Rscript $HOME/pymod/R_cluster/hierarchical_complete_link.R
+/usr/bin/time Rscript $HOME/pymod/R_cluster/hierarchical_complete_link_fctx.R
